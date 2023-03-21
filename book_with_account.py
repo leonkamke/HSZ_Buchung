@@ -72,8 +72,7 @@ def isBookingForm(driver):
 if __name__ == '__main__':
     # Passwort und Email auslesen
     EMAIL, PASSWORD = read_account()
-    print(EMAIL)
-    print(PASSWORD)
+
     # Chrome webdriver starten
     chrome_options = Options()
     chrome_options.add_experimental_option("detach", True)
