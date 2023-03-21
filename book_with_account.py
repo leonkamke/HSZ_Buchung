@@ -5,8 +5,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
 TEST = True
-KURS_ID = "11432933"
-LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Tischtennis_Spielbetrieb.html"
+KURS_ID = "59921137"
+LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Capoeira.html"
 
 
 def read_account():
