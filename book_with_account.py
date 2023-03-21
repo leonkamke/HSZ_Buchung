@@ -5,8 +5,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
 TEST = True
-KURS_ID = "59921137"
-LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Capoeira.html"
+KURS_ID = "11532845"
+LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Volleyball_Spielbetrieb.html"
 
 
 def read_account():
@@ -77,7 +77,7 @@ if __name__ == '__main__':
     chrome_options = Options()
     chrome_options.add_experimental_option("detach", True)
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-    driver.implicitly_wait(1)
+    driver.implicitly_wait(0.008)
 
     found_button = False
     counter = 0
