@@ -9,8 +9,8 @@ from selenium.webdriver.chrome.options import Options
     https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Volleyball_Spielbetrieb.html
 '''
 
-KURS_ID = "11532839"
-LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Volleyball_Spielbetrieb.html"
+KURS_ID = "11432933"
+LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Tischtennis_Spielbetrieb.html"
 
 
 def click_geschlecht_radio_box(driver):
@@ -94,9 +94,14 @@ def click_buchung(driver):
 
 def click_kostenpflichtig_buchen(driver):
     kostenpflichtig_buchen_tag = driver.find_element(by=By.XPATH, value="//input[@value = 'kostenpflichtig buchen']")
-    kostenpflichtig_buchen_tag.click()
+    # kostenpflichtig_buchen_tag.click()
     print("Kostenpflichtig gebucht!")
     # print(kostenpflichtig_buchen_tag.get_attribute("title"))
+
+
+def click_termin_auswaehlen(driver):
+    driver.find_element(by=By.XPATH, value="//input[@type = 'submit']").click()
+    print("Termin ausgewählt")
 
 
 def isBookingForm(driver):
@@ -145,8 +150,10 @@ if __name__ == '__main__':
 
     # ----------------- new page ------------------------------
 
-    while not isBookingForm(driver):
-        print("waiting")
+    if not isBookingForm(driver):
+        # Termin auswählen
+        click_termin_auswaehlen(driver)
+        # ----------------- new page ------------------------------
 
     # click geschlecht
     click_geschlecht_radio_box(driver)
