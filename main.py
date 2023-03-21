@@ -9,8 +9,8 @@ from selenium.webdriver.chrome.options import Options
     https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Volleyball_Spielbetrieb.html
 '''
 
-KURS_ID = "25132137"
-LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Schach_Level_1.html"
+KURS_ID = "11531829"
+LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Sommersemester_2023/_Volleyball_Spielbetrieb.html"
 
 
 def click_geschlecht_radio_box(driver):
@@ -119,7 +119,7 @@ if __name__ == '__main__':
             # HSZ Volleyball Spielbetrieb Wintersemester Buchen Webseite laden
             driver.get(LINK)
 
-            # Warteliste-Button finden
+            # Buchen-Button finden
             a_element = driver.find_element(by=By.ID, value="K" + KURS_ID)
 
             # Get the parent of the <a id="xxxx"><a/> element, which is from type <td></td>
