@@ -1,12 +1,13 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+import time
+
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
+import undetected_chromedriver as uc
+
 TEST = True
-KURS_ID = "11432213"
-LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Tischtennis_Level_2.html"
+KURS_ID = "11432933"
+LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Tischtennis_Spielbetrieb.html"
 
 
 def read_account():
@@ -80,9 +81,9 @@ if __name__ == '__main__':
     EMAIL, PASSWORD = read_account()
 
     # Chrome webdriver starten
-    chrome_options = Options()
-    chrome_options.add_experimental_option("detach", True)
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    #chrome_options = Options()
+    #chrome_options.add_experimental_option("detach", True)
+    driver = uc.Chrome()
     driver.implicitly_wait(0.008)
 
     found_button = False
@@ -141,3 +142,6 @@ if __name__ == '__main__':
     # ----------------- new page ------------------------------
 
     click_kostenpflichtig_buchen(driver)
+
+    # Sleep 10 minutes
+    time.sleep(600)
