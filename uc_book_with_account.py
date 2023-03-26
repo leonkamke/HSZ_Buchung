@@ -6,8 +6,8 @@ from selenium.webdriver.chrome.options import Options
 import undetected_chromedriver as uc
 
 TEST = True
-KURS_ID = "11432933"
-LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Tischtennis_Spielbetrieb.html"
+KURS_ID = "11532876"
+LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Volleyball_Spielbetrieb.html"
 
 
 def read_account():
@@ -81,8 +81,8 @@ if __name__ == '__main__':
     EMAIL, PASSWORD = read_account()
 
     # Chrome webdriver starten
-    #chrome_options = Options()
-    #chrome_options.add_experimental_option("detach", True)
+    # chrome_options = Options()
+    # chrome_options.add_experimental_option("detach", True)
     driver = uc.Chrome()
     driver.implicitly_wait(0.008)
 
@@ -122,26 +122,35 @@ if __name__ == '__main__':
         click_termin_auswaehlen(driver)
         # ----------------- new page ------------------------------
 
-    # click ich habe ein Passwort
-    click_have_password(driver)
+    # here the driver has to be on the "form page"
+    counter = 0
+    finished = False
+    while not finished:
+        try:
+            # click ich habe ein Passwort
+            click_have_password(driver)
 
-    # type email
-    tag = driver.find_element(by=By.ID, value="bs_pw_anm")
-    tag.find_element(by=By.XPATH, value="//input[@type = 'text']").send_keys(EMAIL)
-    # type password
-    tag.find_element(by=By.XPATH, value="//input[@type = 'password']").send_keys(PASSWORD)
-    # click on weiter zur Buchung
-    tag.find_element(by=By.XPATH, value="//input[@value = 'weiter zur Buchung']").click()
+            # type email
+            tag = driver.find_element(by=By.ID, value="bs_pw_anm")
+            tag.find_element(by=By.XPATH, value="//input[@type = 'text']").send_keys(EMAIL)
+            # type password
+            tag.find_element(by=By.XPATH, value="//input[@type = 'password']").send_keys(PASSWORD)
+            # click on weiter zur Buchung
+            tag.find_element(by=By.XPATH, value="//input[@value = 'weiter zur Buchung']").click()
 
-    write_iban(driver)
+            write_iban(driver)
 
-    accept_bedingungen(driver)
+            accept_bedingungen(driver)
 
-    click_buchung(driver)
+            click_buchung(driver)
 
-    # ----------------- new page ------------------------------
+            # ----------------- new page ------------------------------
 
-    click_kostenpflichtig_buchen(driver)
+            click_kostenpflichtig_buchen(driver)
+            finished = True
+        except:
+            counter += 1
+            print("---- Waiting for form page " + str(counter) + " ----")
 
     # Sleep 10 minutes
     time.sleep(600)
