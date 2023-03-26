@@ -30,7 +30,9 @@ def write_email_and_password(driver):
 def write_iban(driver):
     iban_tag = driver.find_element(by=By.XPATH, value="//*[contains(text(), 'IBAN:*')]")
     parent = iban_tag.find_element(by=By.XPATH, value="..")
-    parent.find_element(by=By.XPATH, value="//input[@name = 'iban']").send_keys("DE23560614720007246070")
+    parent = parent.find_element(by=By.XPATH, value="//input[@name = 'iban']")
+    parent.clear()
+    parent.send_keys("DE23560614720007246070")
 
 
 def accept_bedingungen(driver):
