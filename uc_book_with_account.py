@@ -119,7 +119,10 @@ if __name__ == '__main__':
 
     if not isBookingForm(driver):
         # Termin auswählen
-        click_termin_auswaehlen(driver)
+        try:
+            click_termin_auswaehlen(driver)
+        except:
+            print("Error in Termin auswählen")
         # ----------------- new page ------------------------------
 
     # here the driver has to be on the "form page"
