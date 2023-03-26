@@ -1,11 +1,13 @@
 import time
+import pause
+from datetime import datetime
 
 from selenium.webdriver.common.by import By
 import undetected_chromedriver as uc
 
-TEST = True
-KURS_ID = "11532820"
-LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Volleyball_Spielbetrieb.html"
+TEST = False
+KURS_ID = "11531829"
+LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Sommersemester_2023/_Volleyball_Spielbetrieb.html"
 
 
 def read_account():
@@ -77,6 +79,8 @@ def isBookingForm(driver):
 
 
 if __name__ == '__main__':
+    # pause.until(datetime(2023, 3, 27, 0, 5))
+    print("lets go")
     # Passwort und Email auslesen
     EMAIL, PASSWORD = read_account()
 
