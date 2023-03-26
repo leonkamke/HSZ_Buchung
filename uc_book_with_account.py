@@ -1,13 +1,11 @@
 import time
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-
 import undetected_chromedriver as uc
 
 TEST = True
-KURS_ID = "21432224"
-LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Akrobatik_Level_1.html"
+KURS_ID = "11532820"
+LINK = "https://buchung.hsz.rwth-aachen.de/angebote/Wintersemester_2022_23/_Volleyball_Spielbetrieb.html"
 
 
 def read_account():
